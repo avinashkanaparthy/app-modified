@@ -11,14 +11,13 @@ object AppTest_Build : BuildType({
     vcs {
         root(random)
     }
-
     steps {
         dotnetBuild {
             name = "Build .net step"
+            projects = "MySqlDotnetCore/MySqlDotnetCore.csproj"
             param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
         }
     }
-
     triggers {
         vcs {
         }
