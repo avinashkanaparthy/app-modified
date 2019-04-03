@@ -4,6 +4,19 @@ import jetbrains.buildServer.configs.kotlin.v2018_2.*
 import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.dotnetBuild
 import jetbrains.buildServer.configs.kotlin.v2018_2.triggers.vcs
 
+version = "2018.2"
+
+
+project {
+
+    val sequence = sequence {
+        build(AppTest_Build) {
+            produces("application.dll")
+        }
+    }
+    println(sequence)
+}
+
 object AppTest_Build : BuildType({
     id("Build")
     name = "Build"
